@@ -7,7 +7,10 @@ export function retry(instance: AxiosInstance, err: AxiosError) {
 
   // 當前重複請求的次數
   config.currentCount = config.currentCount ?? 0
-  console.log(`第${config.currentCount}次重新連線！`)
+
+  if(config.currentCount > 0){
+    console.log(`第${config.currentCount}次重新連線！`)
+  }
 
   // 當前的重複請求次數已經大於設定的次數，返回Promise
   if (config.currentCount >= count) {
