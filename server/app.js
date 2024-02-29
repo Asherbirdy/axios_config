@@ -1,5 +1,7 @@
 const express = require('express')
 const cors = require('cors')
+const { StatusCodes } = require("http-status-codes");
+const CustomError = require('./errors');
 
 const app = express()
 app.use(cors())
@@ -29,8 +31,20 @@ app.get('/c', (req, res) => {
   }, 3000)
 })
 
+app.post('/d', (req, res) => {
+  throw new error
+})
+
+app.post('/e', (req, res) => {
+  throw new CustomError.BadRequestError(`bad request`)
+})
+
+app.post('/f', (req, res) => {
+  throw new CustomError.UnauthenticatedError(`UnauthenticatedError`)
+})
+
 const port = 3080
 
 app.listen(port, () => {
-  console.log('server running')
+  console.log(`server running on port:${port}`)
 })
