@@ -1,27 +1,18 @@
 <script setup lang="ts">
-import useRequest from '@/hook'
+import { useDataApi } from '@/hook/apis/useDataApi'
 
 const get = async () => {
-  const res = await useRequest.get({
-    url: '/a'
-  })
+  const res = await useDataApi.get()
   console.log('GET:', res)
 }
 
 const post = async () => {
-  const res = await useRequest.post({
-    url: '/b',
-    data: {
-      message: 'POST'
-    }
-  })
+  const res = await useDataApi.post()
   console.log('POST:', res)
 }
 
 const retryGet = async () => {
-  const res = await useRequest.get({
-    url: '/c'
-  })
+  const res = await useDataApi.retryGet()
   console.log('GET:', res)
 }
 </script>
