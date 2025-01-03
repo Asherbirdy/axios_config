@@ -1,6 +1,6 @@
-import Axios from "./Axios"
+import Axios from "./axios/Axios"
 import staticAxiosConfig from './config'
-import _RequstInterceptors from './requestInterceptors'
+import _RequstInterceptors from './axios/requestInterceptors'
 
 const useRequest = new Axios({
   directlyGetData: true, // 是否直接返回 data 數據

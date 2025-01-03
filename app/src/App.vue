@@ -1,27 +1,28 @@
 <script setup lang="ts">
-import useRequest from '@/server/http/index'
+import useRequest from '@/hook'
 
-const get = () => {
-  useRequest.get({
+const get = async () => {
+  const res = await useRequest.get({
     url: '/a'
-  }).then((res) => console.log('GET:', res))
+  })
+  console.log('GET:', res)
 }
 
-const post = () => {
-  useRequest.post({
+const post = async () => {
+  const res = await useRequest.post({
     url: '/b',
     data: {
       message: 'POST'
     }
-  }).then((data) => console.log('POST:', data))
+  })
+  console.log('POST:', res)
 }
 
-const retryGet = () => {
-  useRequest.get({
+const retryGet = async () => {
+  const res = await useRequest.get({
     url: '/c'
-  }).then((res) => console.log('GET:', res)).catch(err => {
-    console.log('Err', err)
   })
+  console.log('GET:', res)
 }
 </script>
 
